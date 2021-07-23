@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace Library.API.Controllers
 {
+    [Produces("application/json", "application/xml")]
     [Route("api/authors/{authorId}/books")]
     [ApiController]
     public class BooksController : ControllerBase
@@ -72,8 +73,18 @@ namespace Library.API.Controllers
             return Ok(_mapper.Map<Book>(bookFromRepo));
         }
 
-
+        /// <summary>
+        /// Create a book for a specific author
+        /// </summary>
+        /// <param name="authorId">The id of the book author</param>
+        /// <param name="bookForCreation">The book to create</param>
+        /// <returns>An ActionResult of type Book</returns>
+        /// <response code="422">Validation error</response>
         [HttpPost()]
+        [Consumes("application/json")]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status422UnprocessableEntity)]
         public async Task<ActionResult<Book>> CreateBook(
             Guid authorId,
             [FromBody] BookForCreation bookForCreation)
