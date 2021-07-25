@@ -10,8 +10,11 @@ using System.Threading.Tasks;
 
 namespace Library.API.Controllers
 {
-
-    [Route("api/authors")]
+    [Produces("application/json","application/xml")]
+    //[Route("api/authors")]
+    [Route("api/v{version:apiVersion}/authors")]
+    //[Route("api/v1.0/authors")]
+    //[ApiExplorerSettings(GroupName = "LibraryOpenAPISpecificationAuthors")]
     [ApiController]
     public class AuthorsController : ControllerBase
     {

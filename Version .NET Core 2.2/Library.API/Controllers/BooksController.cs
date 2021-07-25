@@ -12,7 +12,11 @@ using System.Threading.Tasks;
 namespace Library.API.Controllers
 {
     [Produces("application/json", "application/xml")]
-    [Route("api/authors/{authorId}/books")]
+    //[Route("api/authors/{authorId}/books")]
+    //[Route("api/v{version:apiVersion}/authors/{authorId}/books")]
+    [Route("api/v{version:apiVersion}/authors/{authorId}/books")]
+    //[Route("api/v1.0/authors/{authorId}/books")]
+    //[ApiExplorerSettings(GroupName = "LibraryOpenAPISpecificationBooks")]
     [ApiController]
     public class BooksController : ControllerBase
     { 
