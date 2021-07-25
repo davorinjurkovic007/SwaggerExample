@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Library.API.Contexts;
+using Library.API.OperationFilters;
 using Library.API.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -106,6 +107,13 @@ namespace Library.API
                             Url = new Uri("https://opensource.org/licenses/MIT")
                         }
                     });
+
+                setupAction.ResolveConflictingActions(apiDescriptions =>
+                {
+                    return apiDescriptions.First();
+                });
+
+                setupAction.OperationFilter<GetBookOperationFilter>();
 
                 var xmlCommentsFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
                 var xmlCommentsFullPath = Path.Combine(AppContext.BaseDirectory, xmlCommentsFile);
