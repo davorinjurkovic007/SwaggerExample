@@ -108,11 +108,14 @@ namespace Library.API
                         }
                     });
 
+                /// Not using
                 setupAction.ResolveConflictingActions(apiDescriptions =>
                 {
                     return apiDescriptions.First();
                 });
 
+                // Not working on version 6.1.4
+                //  Best is to not use if not necessary
                 setupAction.OperationFilter<GetBookOperationFilter>();
 
                 var xmlCommentsFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
