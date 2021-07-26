@@ -30,6 +30,7 @@ namespace Library.API.Controllers
         }
 
         [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<ActionResult<IEnumerable<Author>>> GetAuthors()
         {
             var authorsFromRepo = await _authorsRepository.GetAuthorsAsync();
@@ -85,15 +86,17 @@ namespace Library.API.Controllers
         /// <param name="patchDocument">The set of operations to appy to the author</param>
         /// <returns>An ActionResult of type Author</returns>
         /// <remarks>
-        /// Sample request (this request updates the author's first name) \
-        /// PATCH /authors/id \
-        /// [ \
-        ///     { \
-        ///         "op": "replace", \
-        ///         "path": "/firstname", \
-        ///         "value": "new first name" \
-        ///     } \
-        /// ] 
+        /// Sample request (this request updates the author's **first name**)   
+        ///         
+        ///         PATCH /authors/id
+        ///         [   
+        ///             {   
+        ///                 "op": "replace",   
+        ///                 "path": "/firstname",   
+        ///                 "value": "new first name"   
+        ///             }   
+        ///         ]   
+        ///         
         /// </remarks>
         [HttpPatch("{authorId}")]
         public async Task<ActionResult<Author>> UpdateAuthor(

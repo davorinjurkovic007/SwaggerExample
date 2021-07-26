@@ -289,6 +289,16 @@ namespace Library.API
                 }
 
                 setupAction.RoutePrefix = string.Empty;
+                setupAction.DefaultModelExpandDepth(2);
+                setupAction.DefaultModelRendering(Swashbuckle.AspNetCore.SwaggerUI.ModelRendering.Model);
+                setupAction.DocExpansion(Swashbuckle.AspNetCore.SwaggerUI.DocExpansion.None);
+                /// setupAction => 
+                ///     DisplayOperationId, DisplayRequestDuration, DefaultModelsExpandDepth, EnableFilter (This will show a box whit the user
+                ///     can filter by tag.), EnableDeepLinking
+
+                setupAction.EnableDeepLinking();
+                setupAction.DisplayOperationId();
+
             });
 
             app.UseStaticFiles();

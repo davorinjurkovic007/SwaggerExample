@@ -19,15 +19,17 @@
             <param name="patchDocument">The set of operations to appy to the author</param>
             <returns>An ActionResult of type Author</returns>
             <remarks>
-            Sample request (this request updates the author's first name) \
-            PATCH /authors/id \
-            [ \
-                { \
-                    "op": "replace", \
-                    "path": "/firstname", \
-                    "value": "new first name" \
-                } \
-            ] 
+            Sample request (this request updates the author's **first name**)   
+                    
+                    PATCH /authors/id
+                    [   
+                        {   
+                            "op": "replace",   
+                            "path": "/firstname",   
+                            "value": "new first name"   
+                        }   
+                    ]   
+                    
             </remarks>
         </member>
         <member name="M:Library.API.Controllers.AuthorsControllerV2.GetAuthors">
@@ -75,7 +77,8 @@
         </member>
         <member name="P:Library.API.Models.Author.FirstName">
             <summary>
-            The first name of the author
+            The first name of the   
+            **author**
             </summary>
         </member>
         <member name="P:Library.API.Models.Author.LastName">
