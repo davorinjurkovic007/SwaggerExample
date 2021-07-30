@@ -1,4 +1,5 @@
 using Library.API.Contexts;
+using Library.API.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -28,14 +29,15 @@ namespace Library.API
         {
             services.AddControllers();
 
-
-            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-
-
             services.AddDbContext<LibraryContext>(options =>
             {
                 options.UseSqlServer(Configuration.GetConnectionString("LibraryDBConnectionString"));
             });
+
+            services.AddScoped<IBookRepository, BookRepository>();
+            services.AddScoped<IAuthorRepository, AuthorRepository>();
+
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
