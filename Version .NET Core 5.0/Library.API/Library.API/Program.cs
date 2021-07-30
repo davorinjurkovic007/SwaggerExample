@@ -34,6 +34,9 @@ namespace Library.API
                     logger.LogError(ex, "An error occurred while migrating the database.");
                 }
             }
+
+            // run the web app
+            host.Run();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
